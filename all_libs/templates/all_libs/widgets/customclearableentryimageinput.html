@@ -1,0 +1,24 @@
+{% load static %}
+{% if widget.is_initial %}
+<section class="input_container">
+    <section>
+        <input class="add_entry_photo_input" type="{{ widget.type }}" name="{{ widget.name }}" id="{{ widget.checkbox_id }}" {% include "django/forms/widgets/attrs.html" %}>
+        <label class="label_for_add_entry_photo_input" for="{{ widget.checkbox_id }}">
+            <span class="input__file-icon-wrapper"><img class="input__file-icon" src="{{ widget.value.url }}" alt="Выбрать файл"></span>
+        </label>
+    </section>
+    <section class="clearble_icon_initial_container">
+        <img class="clearble_icon_initial" src="{% static 'all_libs\images\cancel_icon.svg' %}">
+    </section>
+</section>
+{% else %}
+<section class="input_container">
+    <input class="add_entry_photo_input" type="{{ widget.type }}" name="{{ widget.name }}" id="{{ widget.checkbox_id }}" {% include "django/forms/widgets/attrs.html" %}>
+    <label class="label_for_add_entry_photo_input" for="{{ widget.checkbox_id }}">
+        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="{% static 'all_libs\images\plus_icon.svg' %}" alt="Выбрать файл"></span>
+    </label>
+    <section class="clearble_icon_container">
+        <img class="clearble_icon" src="{% static 'all_libs\images\cancel_icon.svg' %}">
+    </section>
+</section>
+{% endif %}

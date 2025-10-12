@@ -1,0 +1,14 @@
+{% extends "all_libs/base.html" %}
+{% block navigation %}
+{% endblock navigation %}
+{% block content %}
+
+
+<form class="add_form" action="{% url 'all_libs:topic-create-update' ch_slug=ch_slug lib_slug=lib_slug dir_slug=dir_slug topic_slug=object_slug %}" method='post'>
+    <p>Заголовок:</p>
+    {% csrf_token %}
+    {{ form }}
+    <button class="add-but" name="submit">Сохранить</button>
+    <a href="{% url 'all_libs:dir-detail' lib_slug=lib_slug ch_slug=ch_slug status='editing' dir_slug=dir_slug %}" class="cancel-add">Отмена</a>
+</form>
+{% endblock content %}

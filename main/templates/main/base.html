@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+    {% block css_addition %}
+    {% endblock css_addition %}
+    <link rel="shortcut icon" href='{% static "all_libs/images/icon.svg" %}' type="image/x-icon">
+
+    <title>BALDA</title>
+</head>
+<body>
+        <header>
+            <h1>
+            BALDA
+            </h1>
+
+            <section class="header-buttons-container">
+            <a class="header-button" href="{% url 'search:search_request' %}">
+                <img class="icon" src="{% static 'main/images/search_icon.svg' %}" alt="search">
+                Поиск по приложению
+            </a>
+            {% if user.is_authenticated %}
+                <a class="header-button" href="{% url 'users:logout' %}">
+                    <img class="icon" src="{% static 'main/images/key.svg' %}" alt="auth">
+                    {{ user.username }} | Выйти
+                </a>
+            {% else %}
+                <a class="header-button" href="{% url 'users:register' %}">
+                    <img class="icon" src="{% static 'main/images/register_icon.svg' %}" alt="auth">
+                    Зарегистрироваться
+                </a>
+                <a class="header-button" href="{% url 'users:login' %}">
+                    <img class="icon" src="{% static 'main/images/key.svg' %}" alt="auth">
+                    Войти
+                </a>
+            {% endif %}
+            </section>
+        </header>
+        <nav>
+        {% block navigation %}
+        {% endblock navigation %}
+        </nav>
+        <section class="section-content">
+            {% block content %}
+            {% endblock content %}
+        </section>
+        <script src="{% static 'main/JavaScript/min.js' %}"></script>
+</body>
+</html>

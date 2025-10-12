@@ -1,0 +1,22 @@
+{% extends "all_libs/base.html" %}
+{% load static %}
+{% block navigation %}
+<a href="{% url 'all_libs:index' %}">На главную</a>
+{% endblock navigation %}
+{% block content %}
+<h2>Разделы:</h2>
+<ul class="chapters_tree">
+    {% for chapter in chapters %}
+    <section><a href="{% url 'all_libs:lib-list' ch_slug=chapter.slug %}">{{ chapter.name }}</a></section>
+    {% empty %}
+      <section>Ни одного раздела ещё не добавлено</section>
+    {% endfor %}
+</ul>
+<section class="add_lib_container">
+    {% if perms.all_libs.add_chapter %}
+    <a class="a-image" href="{% url 'all_libs:chapter-create-update' ch_slug='new_object' %}">
+        <img class="icon" src="{% static 'all_libs/images/plus_icon.svg' %}" alt="plus">
+    </a>
+    {% endif %}
+</section>
+{% endblock content %}

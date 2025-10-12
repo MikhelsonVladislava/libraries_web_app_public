@@ -1,0 +1,8 @@
+*.pyc
+*~
+**/fonts/
+*/__pycache__/
+venv
+db.sqlite3
+.idea
+media

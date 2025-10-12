@@ -1,0 +1,51 @@
+{% extends "all_libs/directory.html" %}
+{% load static %}
+{% block navigation %}
+    {{ block.super }}
+{% endblock navigation %}
+{% block content %}
+{% load filters %}
+<h2 class="directory_name_container">
+    <span class="directory_name_span">{{ directory }} (режим редактирования)</span>
+    <a class="a_directory_icon" href="{% url 'all_libs:dir-detail' lib_slug=lib_slug ch_slug=ch_slug dir_slug=directory.slug status='watching' %}">
+    <img class="img_directory_icon" src="{% static 'all_libs/images/eye_icon.svg' %}" alt="eye"></a>
+</h2>
+<section class="tree_button_container">
+        <a class="directory_button" href="{% url 'all_libs:dir-create-update' ch_slug=ch_slug parent_slug=parent_slug_or_no_slug dir_slug=directory.slug lib_slug=lib_slug %}">Редактировать название директории</a>
+        <a class="directory_button" href="{% url 'all_libs:directory-delete' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug %}">Удалить директорию</a>
+</section>
+<ul class="topics_tree">
+    {% for topic in topics %}
+        <ul class="entries_tree">
+            <h3 class="topic_header">
+                {{ topic }}
+                <section class="tree_button_container">
+                    <a class="topic_options_button" href="{% url 'all_libs:topic-delete' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug topic_slug=topic.slug %}">Удалить подзаголовок</a>
+                    <a class="topic_options_button" href="{% url 'all_libs:topic-create-update' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug topic_slug=topic.slug %}">Редактировать подзаголовок</a>
+                    <a class="topic_options_button" href="{% url 'all_libs:entry-create-update' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug topic_slug=topic.slug entry_slug='new_object' %}">Добавить запись</a>
+                </section>
+            </h3>
+
+            {% for entry in topic.entry_set|sort_by:'date_added' %}
+            <section class="entry_container">
+                <section class="entry">{{ entry.text|linebreaks }}</section>
+                <section class="list-images-container">
+                    {% for image in entry.uploadentryphoto_set|sort_by:'date_added' %}
+                        <img class="entry-view-image" src="{{ image.image.url }}">
+                    {% endfor %}
+                </section>
+                <section class="tree_button_container">
+                    <a class="entry_options_button" href="{% url 'all_libs:entry-create-update' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug topic_slug=entry.topic.slug entry_slug=entry.slug %}">Редактировать запись</a>
+                    <a class="entry_options_button" href="{% url 'all_libs:entry-delete' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug entry_slug=entry.slug topic_slug=topic.slug %}">Удалить запись</a>
+                </section>
+            </section>
+            {% empty %}
+            <section class="entry">Ещё нет ни одной записи в этом заголовке</section>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <section class="entry">Здесь нет ещё ни одного заголовка</section>
+    {% endfor %}
+    <p><a class="add_topic" href="{% url 'all_libs:topic-create-update' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug topic_slug='new_object' %}">Добавить подзаголовок</a></p>
+</ul>
+{% endblock content %}

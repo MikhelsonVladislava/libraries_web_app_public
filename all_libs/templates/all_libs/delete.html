@@ -1,0 +1,14 @@
+{% extends "all_libs/base.html" %}
+
+{% block content %}
+<form class='delete_form' action='.' method="post">{% csrf_token %}
+    <p class="delete_label">Вы действительно хотите удалить '{{ object }}'?</p>
+    {{ form }}
+    <section class="del_button_container">
+        <input class="delete_but_yes" type="submit" value="Да">
+        <a class='delete_but_no' href={{object.get_not_delete_url}}>
+            Нет
+        </a>
+    </section>
+</form>
+{% endblock content %}

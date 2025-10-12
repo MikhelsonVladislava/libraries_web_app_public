@@ -1,0 +1,25 @@
+    .sections {
+        display: grid;
+        grid-template-columns:minmax(0,4.5fr);
+        grid-template-areas: "section-content";
+    }
+
+    aside {
+        display: none;
+    }
+
+    .section-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 1.8rem;
+        padding: 5px;
+        justify-items: stretch;
+        grid-area: section-content;
+}
+
+    h2 img {
+        top: 0.4rem;
+        position: relative;
+        top: -3px;
+        width: 1rem;
+}

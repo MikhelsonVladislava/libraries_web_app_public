@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'search/css/base.css' %}">
+    {% block css_addition %}
+    {% endblock css_addition %}
+    <link rel="shortcut icon" href='{% static "all_libs/images/icon.svg" %}' type="image/x-icon">
+
+    <title>Поиск</title>
+</head>
+<body>
+        <header>
+            {% block header %}
+            {% endblock header %}
+        </header>
+        <section class="section-content">
+            {% block content %}
+            {% endblock content %}
+        </section>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "all_libs/base.html" %}
+{% load static %}
+{% block navigation %}
+{% endblock navigation %}
+{% block content %}
+<p>{{ topic }}</p>
+
+
+<form class="total_add_entry_form" action="{% url 'all_libs:entry-create-update' lib_slug=lib_slug ch_slug=ch_slug dir_slug=dir_slug topic_slug=topic_slug entry_slug=object_slug %}" method='post', enctype="multipart/form-data">
+    <p>Запись:</p>
+    <section class="fields_entry_container">
+        {% csrf_token %}
+        {{ form }}
+        <h2>Добавьте изображения</h2>
+        <section class="images-container">
+            {{ image_form.management_form }}
+            <section class="images-form">
+                {% for i_form in image_form %}
+                <section class="image-container">
+                    {{ i_form }}
+                </section>
+                {% endfor %}
+            </section>
+        </section>
+    </section>
+    <button class="add-but" name="submit">Сохранить</button>
+    <a href="{% url 'all_libs:dir-detail' lib_slug=lib_slug ch_slug=ch_slug dir_slug=dir_slug status='editing' %}" class="cancel-add">Отмена</a>
+</form>
+<script src="{% static 'all_libs\JavaScript\new_entry_image.js' %}"></script>
+{% endblock content %}

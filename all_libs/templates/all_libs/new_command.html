@@ -1,0 +1,13 @@
+{% extends "all_libs/base.html" %}
+{% block navigation %}
+{% endblock navigation %}
+{% block content %}
+<p>Добавление новой команды:</p>
+
+<form action="{% url 'all_libs:command-create-update' command_slug=object_slug lib_slug=lib_slug ch_slug=ch_slug %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+    <a href="{% url 'all_libs:commands-list' lib_slug=lib_slug ch_slug=ch_slug %}" class="cancel-add">Отмена</a>
+</form>
+{% endblock content %}

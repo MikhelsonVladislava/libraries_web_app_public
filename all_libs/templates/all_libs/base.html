@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'all_libs/css/base.css' %}">
+    {% block css_addition %}
+    {% endblock css_addition %}
+    <link rel="shortcut icon" href='{% static "all_libs/images/icon.svg" %}' type="image/x-icon">
+
+    <title>Applications</title>
+</head>
+<body>
+        <header>
+            {% block header %}
+                <h1>Applications</h1>
+                <section class="header-buttons-container">
+                <a class="search-button" href="{% url 'search:search_request' %}">
+                    <img class="icon" src="{% static 'all_libs/images/search_icon.svg' %}" alt="search">
+                    Поиск по приложению
+                </a>
+                {% if user.is_authenticated %}
+                <a class="header-button" href="{% url 'users:logout' %}">
+                    <img class="icon" src="{% static 'main/images/key.svg' %}" alt="auth">
+                    {{ user.username }} | Выйти
+                </a>
+                {% else %}
+                <a class="header-button" href="{% url 'users:register' %}">
+                    <img class="icon" src="{% static 'main/images/register.svg' %}" alt="auth">
+                    Зарегистрироваться
+                </a>
+                <a class="header-button" href="{% url 'users:login' %}">
+                    <img class="icon" src="{% static 'main/images/key.svg' %}" alt="auth">
+                    Войти
+                </a>
+                {% endif %}
+                </section>
+            {% endblock header %}
+        </header>
+        <nav>
+            <ul>
+                {% block navigation %}{% endblock %}
+            </ul>
+        </nav>
+        <section class="sections">
+            <section class="section-content">
+                {% block content %}
+                {% endblock content %}
+            </section>
+        </section>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "all_libs/base.html" %}
+{% block navigation %}
+{% endblock navigation %}
+{% block content %}
+
+
+<form class="add_form" action="{% url 'all_libs:chapter-create-update' ch_slug=object_slug %}" method='post'>
+    <p>Раздел:</p>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="add-but" type="submit" value="Сохранить">
+    {% if object_slug == 'new_object' %}
+    <a href="{% url 'all_libs:chapter-list' %}" class="cancel-add">Отмена</a>
+    {% else %}
+    <a href="{% url 'all_libs:lib-list' ch_slug=object_slug %}" class="cancel-add">Отмена</a>
+    {% endif %}
+</form>
+{% endblock content %}

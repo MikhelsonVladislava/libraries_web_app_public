@@ -1,0 +1,12 @@
+{% extends "all_libs/base.html" %}
+{% block css_addition %}
+    {{ block.super }}
+{% endblock %}
+{% block navigation %}
+    <a href="{% url 'main:home' %}">На главную</a>
+    <a href="{% url 'all_libs:chapter-list' %}">Разделы</a>
+{% endblock navigation %}
+{% block content %}
+<p>Надеюсь, в ближайшее время в этот репозиторий никто не посмотрит</p>
+ <!--<a href="http://www.freepik.com">Designed by kjpargeter / Freepik</a> -->
+{% endblock content %}

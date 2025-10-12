@@ -1,0 +1,128 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+:root {
+    --a-and-background-light-color: #e4e5ed;
+    --a-and-background-plu-color: #3b1437;
+    --a-focus-background-plu-color: #260d24;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    align-items: center;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    position: relative;
+    background-color: #1c1c19;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3rem;
+    padding: 1rem;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--a-and-background-light-color);
+}
+
+.form-container {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 0 0 0;
+}
+
+.header-button,
+.header-button:visited {
+    color: #000;
+    display: flex;
+    align-items: center;
+    background-color: var(--a-and-background-light-color);
+    gap: 0.3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.header-button:hover,
+.header-button:focus {
+    background-color: var(--a-and-background-plu-color);
+    color: var(--a-and-background-light-color);
+}
+
+.auth-reg-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth_reg_field {
+    gap: 0.3rem;
+    display: flex;
+}

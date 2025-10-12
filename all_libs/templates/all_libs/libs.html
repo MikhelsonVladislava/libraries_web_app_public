@@ -1,0 +1,35 @@
+{% extends "all_libs/chapters.html" %}
+{% load static %}
+{% block navigation %}
+    <a href="{% url 'all_libs:chapter-list' %}">Разделы</a>
+{% endblock %}
+{% block content %}
+<h2>{{ chapter }}</h2>
+<p>
+    <section class="tree_button_container">
+    {% if perms.all_libs.delete_chapter %}
+        <a href="{% url 'all_libs:chapter-delete' ch_slug=ch_slug %}">Удалить раздел</a>
+    {% endif %}
+    {% if perms.all_libs.change_chapter %}
+        <a href="{% url 'all_libs:chapter-create-update' ch_slug=ch_slug %}">Переименовать</a>
+    {% endif %}
+    </section>
+</p>
+<h3>Библиотеки:</h3>
+<ul class="libs_tree">
+    {% for lib in libs %}
+        <section><a href="{{ lib.get_absolute_url }}">{{ lib.name }}</a>
+          <a href={{ lib.site }}>{{ lib.site }}</a></section>
+    {% empty %}
+    <section>Ни одной библиотеки ещё не добавлено</section>
+    {% endfor %}
+</ul>
+{% if perms.all_libs.add_lib %}
+<section class="add_lib_container">
+    <a class="a-image" href="{% url 'all_libs:lib-create-update' ch_slug=ch_slug lib_slug='new_object' %}">
+        <img class="icon" src="{% static 'all_libs/images/plus_icon.svg' %}" alt="plus">
+    </a>
+</section>
+{% endif %}
+<!--<a href="http://www.freepik.com">Designed by kjpargeter / Freepik</a> -->
+{% endblock content %}

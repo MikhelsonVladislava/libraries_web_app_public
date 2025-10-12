@@ -1,0 +1,37 @@
+{% extends "all_libs/directories.html" %}
+{% load static %}
+{% block navigation %}
+    {{ block.super }}
+    <a href="{% url 'all_libs:dir-list' ch_slug=ch_slug lib_slug=lib_slug %}">{{ directory.lib }}</a>
+{% endblock navigation %}
+{% block content %}
+{% load filters %}
+<h2 class="directory_name_container">
+    <span class="directory_name_span">{{ directory }}</span>
+    {% if perms.all_libs.delete_directory and perms.all_libs.change_directory and perms.all_libs.change_topic and perms.all_libs.add_topic and perms.all_libs.delete_topic and perms.all_libs.delete_entry and perms.all_libs.add_entry and perms.all_libs.change_entry %}
+    <a class="a_directory_icon" href="{% url 'all_libs:dir-detail' ch_slug=ch_slug lib_slug=lib_slug dir_slug=directory.slug status='editing' %}">
+    <img class="img_directory_icon" src="{% static 'all_libs/images/edit_icon.svg' %}" alt="edit"></a>
+    {% endif %}
+</h2>
+<ul class="topics_tree">
+    {% for topic in topics %}
+        <ul class="entries_tree">
+            <a name="{{topic.slug}}"><h3 class="topic_header">{{ topic }}</h3></a>
+            {% for entry in topic.entry_set|sort_by:'date_added' %}
+            <section class="entry">
+                <a class="name_link" name="{{entry.slug}}">{{ entry.text|linebreaks }}</a>
+                <section class="list-images-container">
+                    {% for image in entry.uploadentryphoto_set|sort_by:'date_added' %}
+                        <img class="entry-view-image" src="{{ image.image.url }}">
+                    {% endfor %}
+                </section>
+            </section>
+            {% empty %}
+            <section class="entry">Ещё нет ни одной записи в этом заголовке</section>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <section class="entries_tree">Здесь нет ещё ни одного заголовка</section>
+    {% endfor %}
+</ul>
+{% endblock content %}

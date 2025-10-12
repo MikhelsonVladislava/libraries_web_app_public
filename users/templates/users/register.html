@@ -1,0 +1,18 @@
+{% extends "users/base.html" %}
+
+{% block header %}
+{% endblock header %}
+{% block content %}
+<section class="form-container">
+<h1>Регистрация</h1>
+<form class="auth-reg-form" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+    <p class="auth_reg_field"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}</p>
+    <div class="form-error">{{ field.errors }}</div>
+    {% endfor %}
+    <p><button type="submit">Зарегистрироваться</button></p>
+</form>
+</section>
+{% endblock %}

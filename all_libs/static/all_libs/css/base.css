@@ -1,0 +1,603 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* фон - Photo by
+<a href="https://unsplash.com/@declansun?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Declan Sun</a>
+on
+<a href="https://unsplash.com/photos/a-row-of-bookshelves-filled-with-lots-of-books-aon-6I6Y6uQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.header-buttons-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.header-button,
+.header-button:visited {
+    color: #000;
+    display: flex;
+    align-items: center;
+    background-color: var(--a-light-color);
+    gap: 0.3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.header-button:hover,
+.header-button:focus {
+    background-color: var(--a-blue-color);
+    color: var(--a-light-color);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+:root {
+    --a-light-color: #e4e5ed;
+    --a-blue-color: #2f3a9e;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    position: relative;
+    background-color: #1c1c19;
+    color: #fff;
+}
+
+li {
+    display: inherit;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+span {
+    margin: 0.1rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    align-items: center;
+}
+
+.search-button,
+.search-button:visited {
+    color: #000;
+    display: flex;
+    align-items: center;
+    background-color: var(--a-light-color);
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.search-button:hover,
+.search-button:focus {
+    background-color: var(--a-blue-color);
+    color: var(--a-light-color);
+}
+
+p {
+    margin: 1rem;
+}
+
+nav {
+    height: 4rem;
+    width: 100vw;
+    background-color: var(--a-blue-color);
+    color: #fff;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+}
+
+h1 {
+    font-size: 3rem;
+    padding: 1rem;
+}
+
+h2, h3 {
+    margin: 5px;
+    display: block;
+}
+
+h2 img {
+    top: 0.4rem;
+    position: relative;
+    top: -3px;
+    width: 1rem;
+}
+
+section {
+    display: block;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #2f3a9e;
+}
+
+a:focus, a:hover {
+    color: #ffffff;
+}
+
+nav a:focus,nav a:hover {
+    background-color: #1c0e82;
+}
+
+nav a:link {
+    color: #fff;
+}
+
+nav a:visited {
+    color: #fff;
+}
+
+nav a {
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 0 4rem;
+}
+
+ul {
+    display: inherit;
+    list-style-type: none;
+}
+
+nav ul {
+    text-align: center;
+    list-style-type: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: auto;
+}
+
+.icon,
+.clearble_icon,
+.clearble_icon_initial {
+    width: 1.5rem;
+}
+
+.clearble_icon_container {
+    display: none;
+}
+
+.clearble_icon_initial_container {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+    padding: 0.5rem;
+
+}
+
+.clearble_icon_container:hover,
+.clearble_icon_initial_container:hover,
+.clearble_icon_initial_container:focus,
+.clearble_icon_container:focus {
+    background-color: var(--a-blue-color);
+}
+
+.delete_image_checkbox {
+    display: none;
+}
+
+.sections {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.section-content {
+    font-size: 1rem;
+    padding: 18px;
+    flex-grow: 2;
+}
+
+.chapters_tree,
+.libs_tree,
+.directories_tree {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.directories_tree li {
+    margin: 0 0 0 1rem;
+}
+
+.directories_tree section,
+.chapters_tree section,
+.libs_tree section {
+    display: flex;
+    flex-direction: column;
+}
+
+.name_link:focus,
+.name_link:hover {
+    color: #000;
+}
+
+.tree_node {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.add_name_field,
+.add_site_field {
+    border-radius: 5px;
+    width: 30rem;
+}
+
+.add-but:focus,
+.add-but:hover,
+.cancel-add:focus,
+.cancel-add:hover {
+    background-color: var(--a-blue-color);
+    color: #fff;
+}
+
+.add-but,
+.cancel-add {
+    text-align: center;
+    color: var(--a-blue-color);
+    font-size: 1rem;
+    border-radius: 10px;
+    border-style: none;
+    background-color: var(--a-light-color);
+    width: 10rem;
+
+}
+
+.topics_tree {
+    color: #000;
+}
+
+.children {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 2.5rem;
+}
+
+.tree_node a {
+    border-radius: 10px;
+}
+
+.chapters_tree a,
+.libs_tree a,
+.directories_tree a {
+    width: 100%;
+    height: 100%;
+    background-color: var(--a-light-color);
+    padding: 1rem;
+}
+
+.chapters_tree a:focus,
+.libs_tree a:focus,
+.directories_tree a:focus,
+.directories_tree a:hover,
+.chapters_tree a:hover,
+.libs_tree a:hover {
+    background-color: var(--a-blue-color);
+    color: #fff;
+}
+
+a.a-image,
+a.a-image:hover,
+a.a-image:focus {
+    background-color: unset;
+    width: 2rem;
+    position: relative;
+    padding: 0.5rem;
+}
+
+.add_lib_container {
+    padding: 1rem;
+}
+
+.directory_container {
+    color: #000;
+    padding: 1rem;
+    background: rgb(255, 255, 255, 0.8);
+}
+
+.directory_name_span {
+    font-size: 1.3rem;
+    color: #000;
+}
+
+.topic_header {
+    color: #000;
+    font-size: 1.1rem;
+    background-color: var(--a-light-color);
+}
+
+.tree_button_container {
+    font-size: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.tree_button_container a,
+.add_topic {
+    background-color: var(--a-light-color);
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+.tree_button_container a:hover,
+.tree_button_container a:focus,
+.add_topic:hover,
+.add_topic:focus,
+.del_commands_button:focus,
+.del_commands_button:hover {
+    background-color: var(--a-blue-color);
+    border-radius: 5px;
+    padding: 0.2rem;
+    color: #fff;
+}
+
+.topic_header {
+    background-color: unset;
+    color: #000;
+    width: auto;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.entry {
+    padding: 0.5rem;
+    color: #000;
+    background-color: var(--a-light-color);
+}
+
+.add_form {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: rgb(255, 255, 255, 0.8);
+    flex-direction: column;
+    color: #000;
+}
+
+.a_directory_icon,
+.add_img_entry {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.img_directory_icon,
+.add_entry_im {
+    width: 1.5rem;
+}
+
+.directory_name_container {
+    background: rgb(255, 255, 255, 0.8);
+    display: flex;
+    justify-items: center;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 1rem;
+}
+
+.lib_header {
+    color: #000;
+    font-size: 1.7rem;
+}
+
+.commands-flex {
+    flex-direction: column;
+    display: flex;
+    gap: 3rem;
+}
+
+.command-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.entry-view-image {
+    width: 100%;
+    padding: 1rem;
+}
+
+.list-images-container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.del_commands_button {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: var(--a-light-color);
+    padding: 0.2rem;
+}
+
+.search_request_field_container {
+    display: flex;
+    justify-content: center;
+}
+
+.entries_tree {
+    color: #000;
+    padding: 1rem;
+    margin: 1rem;
+    background: rgb(255, 255, 255, 0.8);
+}
+
+.fields_entry_container {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.images-form,
+.images-container,
+.input_container {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.images-form {
+    gap: 1rem;
+}
+
+.image-container {
+    padding: 1.5rem;
+    width: 100%;
+    background-color: #fff;
+}
+
+.add_entry_photo_input {
+    display: none;
+}
+
+.form_img {
+    width: 25%;
+}
+
+.total_add_entry_form {
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255, 0.8);
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.add_text_field {
+    resize: none;
+    font-size: 1rem;
+    width: 100%;
+    height: 30rem;
+}
+
+.delete_but_no,
+.delete_but_yes,
+.delete_but_no:visited,
+.delete_but_yes:visited {
+    font-size: 1rem;
+    border-style: none;
+    flex: 1;
+    background-color: var(--a-light-color);
+    color: #000;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.delete_form {
+    display: flex;
+    justify-items: center;
+    text-align: center;
+    gap: 1rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.delete_but_no:hover,
+.delete_but_yes:hover,
+.delete_but_no:focus,
+.delete_but_yes:focus {
+    font-size: 1rem;
+    background-color: var(--a-blue-color);
+    color: #fff;
+}
+
+.del_button_container {
+    gap: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin: 0, auto;
+}
+
+.delete_label {
+    background: rgb(255, 255, 255, 0.8);
+    padding: 1.5rem;
+    color: #000;
+}

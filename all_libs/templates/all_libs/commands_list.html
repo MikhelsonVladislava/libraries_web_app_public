@@ -1,0 +1,54 @@
+{% extends 'all_libs/directories.html' %}
+{% load static %}
+{% block navigation %}
+    {{ block.super }}
+    <a href="{% url 'all_libs:dir-list' ch_slug=ch_slug lib_slug=lib.slug %}">{{ lib }}</a>
+{% endblock %}
+
+{% block content %}
+
+<section class="directory_container">
+    {% if commands %}
+        <section class="tree_button_container">
+            <span class="del_commands_button">Удалить команды</span>
+        </section>
+    {% endif %}
+    <script>
+        const del_button = document.querySelector(".del_commands_button");
+        let formDelete = document.querySelector(".delete_container");
+        let checkbox = null;
+        let commandsName = null;
+        let csrf = '{% csrf_token %}'
+        let deleteAction = "{% url 'all_libs:delete_commands' ch_slug=ch_slug lib_slug=lib.slug %}"
+        let checkboxName = ''
+        let commandClassName = ''
+    </script>
+    <section class="commands-flex">
+        {% for command in commands %}
+        <section class="command-container">
+            <a class="name_link" name="{{command.slug}}"><span class="{{ command.slug }}"><strong>{{ command.name }}</strong></span></a>
+            <section class="about_command">{{ command.about|linebreaks }}</section>
+        </section>
+        <section class="tree_button_container">
+            <a href="{% url 'all_libs:command-create-update' command_slug=command.slug ch_slug=ch_slug lib_slug=lib.slug %}">Редактировать</a>
+        </section>
+        <script>
+            del_button.addEventListener('click', function(event) {
+                commandsName = document.querySelector(".{{ command.slug }}");
+                checkbox = document.createElement('input');
+                checkbox.name = "{{ command.name }}";
+                checkbox.type = "checkbox";
+                commandsName.before(checkbox);
+})
+        </script>
+        <script src="{% static 'all_libs/JavaScript/delete_command_checkbox.js' %}"></script>
+        {% empty %}
+        Ни одной команды ещё не записано
+        {% endfor %}
+    </section>
+    <section class="tree_button_container">
+        <a href="{% url 'all_libs:command-create-update' command_slug='new_object' ch_slug=ch_slug lib_slug=lib.slug %}">Добавить команду</a>
+    </section>
+    <script  src="{% static 'all_libs/JavaScript/form-delete.js' %}" ></script>
+</section>
+{% endblock content %}

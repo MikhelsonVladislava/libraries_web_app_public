@@ -1,0 +1,42 @@
+{% extends 'all_libs/libs.html' %}
+{% load static %}
+{% block navigation %}
+    {{ block.super }}
+    <a href="{% url 'all_libs:lib-list' ch_slug=ch_slug %}">{{ lib.chapter }}</a>
+{% endblock %}
+
+{% block content %}
+{% load mptt_tags %}
+<section class="directory_container">
+    <h2 class="lib_header">{{ lib }}</h2>
+    <section class="tree_button_container">
+        {% if perms.all_libs.change_lib %}
+        <span><a href="{% url 'all_libs:lib-create-update' lib_slug=lib_slug ch_slug=ch_slug %}">Переименовать</a></span>
+        {% endif %}
+        {% if perms.all_libs.delete_lib %}
+        <span><a href="{% url 'all_libs:lib-delete' ch_slug=ch_slug lib_slug=lib_slug %}">Удалить</a></span>
+        {% endif %}
+    </section>
+    <ul class="directories_tree">
+        {% recursetree directories %}
+            <li class="tree_node"><a href="{% url 'all_libs:dir-detail' lib_slug=lib_slug ch_slug=ch_slug status='watching' dir_slug=node.slug %}">{{ node }}</a>
+                {% if perms.all_libs.add_directory %}
+                <a class="a-image" href="{% url 'all_libs:dir-create-update' ch_slug=ch_slug dir_slug='new_object' parent_slug=node.slug lib_slug=lib_slug %}">
+                <img class="icon" src="{% static 'all_libs/images/plus_icon.svg' %}" alt="plus"></a>
+                {% endif %}
+            </li>
+                {% if not node.is_leaf_node %}
+                    <ul class="children">
+                        {{ children }}
+                    </ul>
+                {% endif %}
+         {% endrecursetree %}
+    </ul>
+    {% if perms.all_libs.add_directory %}
+    <a class="a-image" href="{% url 'all_libs:dir-create-update' dir_slug='new_object' parent_slug='no-slug' ch_slug=ch_slug lib_slug=lib_slug %}"><img class="icon" src="{% static 'all_libs/images/plus_icon.svg' %}" alt="plus"></a>
+    {% endif %}
+    <section class="tree_button_container">
+        <a href="{% url 'all_libs:commands-list' lib_slug=lib_slug ch_slug=ch_slug %}">Команды</a>
+    </section>
+</section>
+{% endblock content %}

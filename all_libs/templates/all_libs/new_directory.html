@@ -1,0 +1,17 @@
+{% extends "all_libs/base.html" %}
+{% block navigation %}
+{% endblock navigation %}
+{% block content %}
+
+<form class="add_form" action="{% url 'all_libs:dir-create-update' ch_slug=ch_slug dir_slug=object_slug parent_slug=parent_slug_or_no_slug lib_slug=lib_slug %}" method='post'>
+    <p>Директория:</p>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="add-but" type="submit">Сохранить</button>
+    {% if object_slug == 'new_object' %}
+    <a href="{% url 'all_libs:dir-list' lib_slug=lib_slug ch_slug=ch_slug %}" class="cancel-add">Отмена</a>
+    {% else %}
+    <a href="{% url 'all_libs:dir-detail' dir_slug=object_slug lib_slug=lib_slug ch_slug=ch_slug status='editing' %}" class="cancel-add">Отмена</a>
+    {% endif %}
+</form>
+{% endblock content %}
