@@ -135,7 +135,7 @@ class DirectoryDetailView(LoginRequiredMixin, DetailView):
     slug_url_kwarg = 'dir_slug'
 
     def get_template_name(self):
-        if self.kwargs['status'] == "editing" and self.request.user.groups.contains(Group.objects.get(name='moderator')):
+        if self.kwargs['status'] == "editing" and (self.request.user.groups.contains(Group.objects.get(name='moderator')) or self.request.user.is_superuser):
             return "all_libs/edit_directory.html"
         elif self.kwargs['status'] == "watching" or self.kwargs['status'] == "editing":
             return "all_libs/directory.html"
