@@ -38,4 +38,9 @@ python create_groups.py
 python manage.py runserver
 ```
 
+### Используемые иконки
+1) Google Icons (License - https://www.apache.org/licenses/LICENSE-2.0.html)
+2) Icon Park by Bytedance Inc (License - https://www.apache.org/licenses/LICENSE-2.0.html)
+
+Даты работы над проектом: Апрель - Август 2024 года.
 Примечание: Этот проект предназначен для образовательных целей.
