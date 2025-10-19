@@ -25,7 +25,7 @@
 
 ```bash
 # Клонирование репозитория
-git clone https://github.com/Vortex0034/libraries_web_app_public.git
+git clone https://github.com/MikhelsonVladislava/libraries_web_app_public.git
 cd libraries_web_app_public
 
 # Создание базы данных
